@@ -38,7 +38,7 @@ import android.widget.AutoCompleteTextView;
  * <h1>Options:</h1>
  * <p>{@link #setShowDropDownWithNoText(boolean)}</p>
  * 
- * See {@link AutoCompleteTextView} for more info.
+ * See {@link android.widget.AutoCompleteTextView} for more info.
  */
 public class AccountSuggestTextView extends AutoCompleteTextView {
 	

@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "20.0.0"
+
+    defaultConfig {
+        applicationId "com.stevenschoen.accountsuggesttextview"
+        minSdkVersion 10
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+apply plugin: 'maven'
+
+def libraryAarFile = file('build/library.aar')
+artifacts {
+    archives libraryAarFile
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(
+                url: 'https://api.bintray.com/maven/dsteve595/AccountSuggestTextView/AccountSuggestTextView'
+        ) {
+            authentication(
+                    userName: 'dsteve595',
+                    password: '3bb67f13ec434253ee1677ec2887c76751cd300c'
+            )
+        }
+        pom.groupId = 'bintray-dsteve595-AccountSuggestTextView-AccountSuggestTextView'
+        pom.artifactId = 'library'
+        pom.version = '1.0'
+    }
+}
