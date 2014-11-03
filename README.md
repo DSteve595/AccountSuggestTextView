@@ -4,7 +4,7 @@ An editable text view based on AutoCompleteTextView that reads the names of the 
 
 Useful for login/register fields.
 
-__Works on API 8 (2.2, Froyo) and up.__
+__Works on API 5 (2.0, Eclair) and up.__
 
 ![Screenshot](http://i.imgur.com/YaXGjvG.png "Screenshot")
 

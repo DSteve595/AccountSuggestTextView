@@ -1,6 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.stevenschoen.accountsuggesttextview">
 
+    <uses-sdk
+        android:minSdkVersion="5"
+        android:targetSdkVersion="21" />
+
     <application android:allowBackup="true" />
 
 </manifest>
