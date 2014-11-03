@@ -21,8 +21,10 @@ import java.util.regex.Pattern;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Rect;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Patterns;
 import android.widget.ArrayAdapter;
@@ -44,6 +46,11 @@ public class AccountSuggestTextView extends AutoCompleteTextView {
 	
 	private ArrayList<String> emails = new ArrayList<String>();
 	private ArrayAdapter<String> adapter;
+	
+	public static final Pattern EMAIL_ADDRESS_COMPAT = Pattern
+			.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" + "\\@"
+					+ "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" + "(" + "\\."
+					+ "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" + ")+");
 	
 	private boolean showDropDownWithNoText = false;
 	
@@ -71,7 +78,7 @@ public class AccountSuggestTextView extends AutoCompleteTextView {
 	
 	private void populateEmails() {
 		emails.clear();
-		Pattern emailPattern = Patterns.EMAIL_ADDRESS;
+		Pattern emailPattern = getEmailPattern();
 		Account[] accounts = AccountManager.get(getContext()).getAccounts();
 		for (Account account : accounts) {
 		    if (emailPattern.matcher(account.name).matches() && !emails.contains(account.name)) {
@@ -106,5 +113,14 @@ public class AccountSuggestTextView extends AutoCompleteTextView {
 	public void setShowDropDownWithNoText(boolean show) {
 		this.showDropDownWithNoText = show;
 		invalidate();
+	}
+	
+	@SuppressLint("NewApi")
+	private Pattern getEmailPattern() {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
+			return Patterns.EMAIL_ADDRESS;
+		} else {
+			return EMAIL_ADDRESS_COMPAT;
+		}
 	}
 }
