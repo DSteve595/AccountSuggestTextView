@@ -1,4 +1,4 @@
-#AccountSuggestTextView
+# AccountSuggestTextView
 
 An editable text view based on AutoCompleteTextView that reads the names of the user's email (and Gmail) accounts and provides them as suggestions.
 
@@ -8,7 +8,7 @@ __Works on API 5 (2.0, Eclair) and up.__
 
 ![Screenshot](http://i.imgur.com/YaXGjvG.png "Screenshot")
 
-###Usage
+### Usage
 
 Firstly, __make sure your app uses the `GET_ACCOUNTS` permission in its manifest.__
 
@@ -27,7 +27,7 @@ Or you can inflate it like any other view.
 
 By default, the user's email addresses won't appear until a few characters are typed into the text field (following AutoCompleteTextView's behavior). Use `setShowDropDownWithNoText(true)` to change this.
 
-###License
+### License
 
 Copyright 2013 Steven Schoen
 
